@@ -7,6 +7,7 @@ import { VideoGridComponent } from './video/video-grid/video-grid.component';
 import { VideoItemComponent } from './video/video-item/video-item.component';
 import { SearchComponent } from './header/search/search.component';
 import { LoginComponent } from './header/login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginComponent } from './header/login/login.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
