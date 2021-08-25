@@ -8,9 +8,9 @@ describe('VideoGridComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VideoGridComponent ]
+      declarations: [ VideoGridComponent ],
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
