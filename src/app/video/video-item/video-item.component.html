@@ -1,1 +1,20 @@
-<p>video-item works!</p>
+<li *ngIf="video" [ngClass]="currentClasses">
+  <img [src]="video.snippet.thumbnails.medium.url" alt="video thumbnail" class="video-img">
+  <div class="video-title">{{video.snippet.title}}</div>
+  <div class="video-stats">
+    <div class="video-views">
+      {{video.statistics.viewCount}}
+    </div>
+    <div class="video-likes">
+      {{video.statistics.likeCount}}
+    </div>
+    <div class="video-dislikes">
+      {{video.statistics.dislikeCount}}
+    </div>
+    <div class="video-comments">
+      {{video.statistics.commentCount}}
+    </div>
+  </div>
+  <button class="video-button">Details...</button>
+  <div>{{date}}</div>
+</li>
