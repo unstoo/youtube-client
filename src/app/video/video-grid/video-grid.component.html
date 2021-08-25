@@ -1,1 +1,4 @@
-<p>video-grid works!</p>
+<ul class='video-grid' *ngIf="videosFiltered">
+  <app-video-item *ngFor="let video of videosFiltered" [video]="video">
+  </app-video-item>
+</ul>
