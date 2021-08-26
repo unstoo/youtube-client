@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core';
-// import { Observable, of  } from 'rxjs';
 import { Video } from './video';
+import { VideoFilter } from './video-filter';
 import { VIDEOS } from './mock-videos';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VideosService {
   videos: Video[] = VIDEOS;
+
+  filter: VideoFilter = {
+    str: '',
+  };
+
   constructor() { }
 
   getVideos(): Video[] {
     return this.videos;
+  }
+
+  getFilter(): VideoFilter {
+    return this.filter;
   }
 
   sortByViewsAsc(): void {
