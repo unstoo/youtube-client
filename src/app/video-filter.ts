@@ -1,3 +1,4 @@
 export interface VideoFilter {
-  str: string
+  str: string,
+  sort?: string
 }

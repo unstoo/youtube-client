@@ -9,6 +9,7 @@ import { VideoItemComponent } from './video/video-item/video-item.component';
 import { SearchComponent } from './header/search/search.component';
 import { LoginComponent } from './header/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterVideosByTitlePipe } from './filter-videos-by-title.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     VideoItemComponent,
     SearchComponent,
     LoginComponent,
+    FilterVideosByTitlePipe
   ],
   imports: [
     BrowserModule,

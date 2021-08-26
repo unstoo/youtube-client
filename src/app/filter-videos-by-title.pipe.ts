@@ -6,7 +6,19 @@ import { Video } from './video';
 })
 export class FilterVideosByTitlePipe implements PipeTransform {
 
-  transform(value: Video[], title: string): Video[] {
-    return value.filter((data) => data.snippet.title.includes(title));
+  transform(value: Video[], title: string, len: string | undefined): Video[] {
+    if (title === '') {
+      return [...value];
+    }
+
+    const result: Video[] = [];
+
+    value.forEach((video) => {
+      if (video.snippet.title.includes(title)) {
+        result.push(video);
+      }
+    });
+
+    return result;
   }
 }

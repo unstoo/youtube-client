@@ -11,6 +11,7 @@ export class VideosService {
 
   filter: VideoFilter = {
     str: '',
+    sort: ''
   };
 
   constructor() { }
@@ -31,6 +32,7 @@ export class VideosService {
     });
 
     this.videos = result;
+    this.filter.sort = 'vasc';
   }
 
   sortByViewsDesc(): void {
@@ -41,6 +43,7 @@ export class VideosService {
     });
 
     this.videos = result;
+    this.filter.sort = 'vdesc';
   }
 
   sortByDateAsc(): void {
@@ -51,6 +54,7 @@ export class VideosService {
     });
 
     this.videos = result;
+    this.filter.sort = 'daesc';
   }
 
   sortByDateDesc(): void {
@@ -61,6 +65,7 @@ export class VideosService {
     });
 
     this.videos = result;
+    this.filter.sort = 'ddesc';
   }
 
 
