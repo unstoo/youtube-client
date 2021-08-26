@@ -19,7 +19,7 @@ import { FilterVideosByTitlePipe } from './filter-videos-by-title.pipe';
     VideoItemComponent,
     SearchComponent,
     LoginComponent,
-    FilterVideosByTitlePipe
+    FilterVideosByTitlePipe,
   ],
   imports: [
     BrowserModule,
