@@ -11,13 +11,18 @@ export class VideosService {
 
   filter: VideoFilter = {
     str: '',
-    sort: ''
+    sort: '',
+    isVisible: false,
   };
 
   constructor() { }
 
   getVideos(): Video[] {
     return this.videos;
+  }
+
+  makeVisible(): void {
+    this.filter.isVisible = true;
   }
 
   getFilter(): VideoFilter {

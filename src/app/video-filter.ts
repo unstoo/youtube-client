@@ -1,4 +1,5 @@
 export interface VideoFilter {
   str: string,
-  sort?: string
+  sort?: string,
+  isVisible?: boolean
 }

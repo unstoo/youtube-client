@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-interface SI {
-  input: string
-}
+import { VideosService } from 'src/app/videos.service';
 
 @Component({
   selector: 'app-search',
@@ -11,16 +8,18 @@ interface SI {
 })
 export class SearchComponent implements OnInit {
   input: string = '';
-  visible: boolean = false;
-  name: string = 'Your Name'
 
-  constructor() { }
+  visible: boolean = false;
+
+  name: string = 'Your Name';
+
+  constructor(private videosService: VideosService) { }
 
   ngOnInit(): void {
   }
 
-  searchHandler() {
-    // this.visible = true;
+  onSearch() {
+    this.videosService.makeVisible();
   }
 
   toggleSettings() {
