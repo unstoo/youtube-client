@@ -1,4 +1,4 @@
-<ul class='video-grid' *ngIf="videosFiltered">
-  <app-video-item *ngFor="let video of videosFiltered" [video]="video">
+<ul class='video-grid' *ngIf="videos">
+  <app-video-item *ngFor="let video of videos" [video]="video">
   </app-video-item>
 </ul>
