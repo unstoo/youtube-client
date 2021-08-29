@@ -1,0 +1,36 @@
+<article
+  *ngIf="video"
+  class="video-details"
+>
+  <button class="button" (click)="goBack">&#10094;</button>
+
+    <img
+      [src]="video.snippet.thumbnails.standard.url"
+      alt="video thumbnail"
+      class="video-img"
+    />
+
+  <div class="details" [appColorTagByDate]="this.video.snippet.publishedAt">
+    <div class="header-row">
+      <div class="title">{{ video.snippet.title }}</div>
+      <div class="date">{{ video.snippet.publishedAt | date }}</div>
+    </div>
+
+    <div class="sub-title">Description:</div>
+    <div class="description">{{ video.snippet.description }}</div>
+    <div class="stats">
+      <div class="video-views">
+        {{ video.statistics.viewCount }}
+      </div>
+      <div class="video-likes">
+        {{ video.statistics.likeCount }}
+      </div>
+      <div class="video-dislikes">
+        {{ video.statistics.dislikeCount }}
+      </div>
+      <div class="video-comments">
+        {{ video.statistics.commentCount }}
+      </div>
+    </div>
+  </div>
+</article>
