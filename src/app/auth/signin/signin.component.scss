@@ -1,0 +1,79 @@
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 2vw;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 1.8vw;
+}
+
+label {
+  margin-bottom: 0.6vw;
+  font-size: 1vw;
+  color: #848484;
+}
+
+input {
+  height: 2vw;
+  min-height: 20px;
+  padding-left: 0.4vw;
+  font-size: 1vw;
+  border: none;
+  width: 100%;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.error.input-wrapper::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0.2vw;
+  bottom: -0.2vw;
+  left: 0;
+  right: 0;
+  background-color: #ff5555;;
+  z-index: 1000;
+  border-radius: 0 0 0.4vw 0.4vw;
+}
+
+
+.error-message {
+  margin-top: 0.4vw;
+  margin-bottom: 1vw;
+  color: #ff5555;
+}
+
+.error-message:last-of-type {
+  margin-bottom: 1.5vw;
+}
+
+button {
+  height: 2.2vw;
+  min-height: 30px;
+  width: 8vw;
+  margin-left: auto;
+  border: none;
+  border-radius: 0.4vw;
+  background-color: rgba(47, 128, 237, 1);
+  box-shadow: 2px 0px 4px 0px rgba(47, 128, 237, 1);
+  font-size: 1.2vw;
+  color: white;
+}
+
+button:hover {
+  background-color: rgb(0, 96, 223);
+}
+
+button:disabled,
+button:hover:disabled {
+  background-color: rgb(172, 172, 172);
+  box-shadow: none;
+}
+

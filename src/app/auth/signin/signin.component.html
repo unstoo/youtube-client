@@ -1,0 +1,41 @@
+<ng-container [formGroup]="form">
+  <h2 >Login</h2>
+  <label for="email">Email</label>
+  <div class="input-wrapper"
+  [class.error]="(f.email.dirty || f.email.touched) && f.email.errors">
+    <input type="text" name="email" id="email" formControlName="email">
+  </div>
+  <div *ngIf="f.email?.errors  && (f.email.dirty || f.email.touched);else emailStub">
+    <div class="error-message" *ngIf="f.email.errors?.required">
+      Email required
+    </div>
+    <div class="error-message" *ngIf="f.email.errors?.email">
+      Invalid email format
+    </div>
+  </div>
+  <ng-template class="error-message" #emailStub>
+    <div  class="error-message">
+      &nbsp;
+    </div>
+  </ng-template>
+
+  <label for="password">Password</label>
+  <div class="input-wrapper" [class.error]="(f.password.dirty || f.password.touched) && f.password.errors">
+    <input type="password" name="password" id="password" formControlName="password">
+  </div>
+  <div *ngIf="f.password.errors && (f.password.dirty || f.password.touched);else pwStub">
+    <div class="error-message" *ngIf="f.password.errors?.required">
+      Password required
+    </div>
+    <div class="error-message" *ngIf="f.password.errors?.minlength">
+      Password minimum length is 4
+    </div>
+  </div>
+  <ng-template class="error-message" #pwStub>
+    <div  class="error-message">
+      &nbsp;
+    </div>
+  </ng-template>
+
+  <button type="submit" (click)="submit()" [disabled]="form.invalid">Login</button>
+</ng-container>
