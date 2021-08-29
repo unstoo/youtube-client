@@ -1,0 +1,24 @@
+:host {
+  flex-grow: 1;
+  align-items: center;
+  display: flex;
+}
+
+.not-found {
+  margin: auto;
+  display: flex;
+}
+
+.message {
+  font-size: 1.8vw;
+  color: #828282;
+  width: 15vw;
+}
+
+.icon {
+  height: 5vw;
+  width: 5vw;
+  margin-right: 2vw;
+  background-image: url("/assets/404.svg");
+  background-size: contain;
+}
