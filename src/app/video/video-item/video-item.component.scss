@@ -1,5 +1,4 @@
 .video-item {
-  position: relative;
   height: 90%;
   list-style-type: none;
   display: grid;
@@ -8,32 +7,6 @@
   background-color: rgba(229, 229, 229, 1);
   padding: 1.4vw;
   border-radius: 0.4vw;
-}
-
-.video-item::after {
-  content: '';
-  height: 1vw;
-  width: 100%;
-  bottom: 0;
-  position: absolute;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  border-bottom-left-radius: 0.4vw;
-  border-bottom-right-radius: 0.4vw;
-}
-
-.underOneMonth.video-item::after {
-  background-color: rgba(39, 174, 96, 1);
-}
-.underSevenDays.video-item::after {
-  background: rgba(47, 128, 237, 1);
-}
-.overSixMonths.video-item::after {
-  background: rgba(235, 87, 87, 1);
-}
-.underSixMonths.video-item::after {
-  background: rgba(242, 201, 76, 1);
 }
 
 .video-img {

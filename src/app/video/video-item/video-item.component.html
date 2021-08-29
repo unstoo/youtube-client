@@ -1,4 +1,5 @@
-<li *ngIf="video" [ngClass]="currentClasses">
+<li *ngIf="video" class="video-item"
+  [appColorTagByDate]="this.video.snippet.publishedAt">
   <img [src]="video.snippet.thumbnails.medium.url" alt="video thumbnail" class="video-img">
   <div class="video-title">{{video.snippet.title}}</div>
   <div class="video-stats">
@@ -16,5 +17,4 @@
     </div>
   </div>
   <button class="video-button">Details...</button>
-  <div>{{date}}</div>
 </li>
