@@ -20,8 +20,8 @@ export class ColorTagByDateDirective implements OnInit {
     tag.style.left = '0';
     tag.style.right = '0';
     tag.style.zIndex = '1000';
-    tag.style.borderBottomLeftRadius = '0.4vw',
-    tag.style.borderBottomRightRadius = '0.4vw',
+    tag.style.borderBottomLeftRadius = '0.4vw';
+    tag.style.borderBottomRightRadius = '0.4vw';
     this.el.nativeElement.appendChild(tag);
   }
 
