@@ -10,6 +10,7 @@ import { SearchComponent } from './header/search/search.component';
 import { LoginComponent } from './header/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FilterVideosByTitlePipe } from './filter-videos-by-title.pipe';
+import { ColorTagByDateDirective } from './video/directives/color-tag-by-date.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FilterVideosByTitlePipe } from './filter-videos-by-title.pipe';
     SearchComponent,
     LoginComponent,
     FilterVideosByTitlePipe,
+    ColorTagByDateDirective,
   ],
   imports: [
     BrowserModule,
