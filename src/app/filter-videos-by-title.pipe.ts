@@ -3,14 +3,11 @@ import { Video } from './video';
 
 @Pipe({
   name: 'filterVideosByTitle',
+  pure: false,
 })
 export class FilterVideosByTitlePipe implements PipeTransform {
 
-  transform(value: Video[], title: string, len: string | undefined): Video[] {
-    if (len) {
-      // a hack to make VideoGridComponent re-rerender, when Video[] is sorted in VideosService
-    }
-
+  transform(value: Video[], title: string): Video[] {
     if (title === '') {
       return [...value];
     }
