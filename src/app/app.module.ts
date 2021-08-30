@@ -1,32 +1,35 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
-import { FiltersComponent } from './header/filters/filters.component';
-import { VideoGridComponent } from './video/video-grid/video-grid.component';
-import { VideoItemComponent } from './video/video-item/video-item.component';
-import { SearchComponent } from './header/search/search.component';
-import { LoginComponent } from './header/login/login.component';
+import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilterVideosByTitlePipe } from './filter-videos-by-title.pipe';
-import { ColorTagByDateDirective } from './video/directives/color-tag-by-date.directive';
+
+import { VideoModule } from './video/video.module';
+import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
+import { AppComponent } from './app.component';
+import { NotFoundComponent } from './404/not-found/not-found.component';
+import { ModalComponent } from './auth/modal/modal.component';
+import { VideoGridComponent } from './video/video-grid/video-grid.component';
+import { VideoDetailsComponent } from './video/video-details/video-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FiltersComponent,
-    VideoGridComponent,
-    VideoItemComponent,
-    SearchComponent,
-    LoginComponent,
-    FilterVideosByTitlePipe,
-    ColorTagByDateDirective,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    FormsModule,
+    VideoModule,
+    CoreModule,
+    AuthModule,
+    RouterModule.forRoot([
+      { path: '', redirectTo: '/video', pathMatch: 'full' },
+      { path: 'video', component: VideoGridComponent },
+      { path: 'auth', component: ModalComponent },
+      { path: 'video/:id', component: VideoDetailsComponent },
+      { path: '**', component: NotFoundComponent },
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent],
