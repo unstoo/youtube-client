@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VideosService } from 'src/app/videos.service';
+import { VideosService } from 'src/app/video-data/services/videos.service';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +13,9 @@ export class SearchComponent implements OnInit {
 
   name: string = 'Your Name';
 
-  constructor(private videosService: VideosService) { }
+  constructor(
+    private videosService: VideosService
+    ) { }
 
   ngOnInit(): void {
   }

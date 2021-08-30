@@ -1,6 +1,6 @@
 <ng-container [formGroup]="form">
-  <h2 >Login</h2>
-  <label for="lastname">First name</label>
+  <h2 >Register</h2>
+  <label for="lastname">First Name</label>
   <div class="input-wrapper" [class.error]="(f.firstname.dirty || f.firstname.touched) && f.firstname.errors">
     <input type="firstname" name="firstname" id="lastname" formControlName="firstname">
   </div>
@@ -16,7 +16,7 @@
     </div>
   </ng-template>
 
-  <label for="lastname">Last name</label>
+  <label for="lastname">Last Name</label>
   <div class="input-wrapper" [class.error]="(f.lastname.dirty || f.lastname.touched) && f.lastname.errors">
     <input type="lastname" name="lastname" id="lastname" formControlName="lastname">
   </div>

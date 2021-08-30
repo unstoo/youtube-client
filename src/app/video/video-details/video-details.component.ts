@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Video } from '../../video';
-import { VIDEOS } from '../../mock-videos';
+import { Video } from '../../video-data/models/video';
+import { VIDEOS } from '../../video-data/mock-videos';
 
 
 

@@ -2,6 +2,7 @@ export interface Video {
   snippet: {
     publishedAt: string,
     title: string,
+    description: string,
     thumbnails: {
       default: Thumbnail,
       medium: Thumbnail,

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { VideosService } from '../../videos.service';
-import { VideoFilter } from '../../video-filter';
+import { VideosService } from '../../video-data/services/videos.service';
+import { VideoFilter } from '../../video-data/models/video-filter';
 
 @Component({
   selector: 'app-filters',
@@ -14,9 +14,9 @@ export class FiltersComponent implements OnInit {
 
   viewsDesc: boolean = true;
 
-  filter: VideoFilter = { str: '' };
+  filter: VideoFilter = { str: '' }
 
-  constructor(private videosService: VideosService) { }
+  constructor(private videosService: VideosService) {}
 
   ngOnInit(): void {
     this.filter = this.videosService.getFilter();

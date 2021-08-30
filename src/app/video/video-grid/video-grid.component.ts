@@ -1,7 +1,7 @@
-import { VideosService } from '../../videos.service';
+import { VideosService } from '../../video-data/services/videos.service';
 import { Component, OnInit } from '@angular/core';
-import { Video } from '../../video';
-import { VideoFilter } from '../../video-filter';
+import { Video } from '../../video-data/models/video';
+import { VideoFilter } from '../../video-data/models/video-filter';
 
 @Component({
   selector: 'app-video-grid',

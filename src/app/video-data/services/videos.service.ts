@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Video } from './video';
-import { VideoFilter } from './video-filter';
-import { VIDEOS } from './mock-videos';
+import { Video } from '../models/video';
+import { VideoFilter } from '../models/video-filter';
+import { VIDEOS } from '../mock-videos';
+
 
 @Injectable({
   providedIn: 'root',

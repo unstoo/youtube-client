@@ -1,7 +1,7 @@
 .video-item {
-  height: 90%;
+  height: 100%;
   list-style-type: none;
-  display: grid;
+  display: flex;
   align-items: center;
   flex-direction: column;
   background-color: rgba(229, 229, 229, 1);
@@ -10,20 +10,22 @@
 }
 
 .video-img {
-  max-width: 100%;
+  width: 100%;
   margin-bottom: 1vw;
 }
 
 .video-title {
-  margin-bottom: 1vw;
+  margin-bottom: 1.5vw;
   text-align: center;
   font-size: 1.4vw;
+  font-weight: 500;
 }
 
 .video-stats {
-  width: 90%;
+  width: 98%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-top: auto;
   margin-bottom: 1vw;
   font-size: 1vw;
 }
@@ -32,39 +34,50 @@
 .video-likes,
 .video-dislikes,
 .video-comments {
-  background-repeat: no-repeat;
-  background-size: 50% 50%;
-  background-position-y: center;
-  background-position-x: 0;
-  color: rgb(61, 61, 61);
-  padding-left: 22px;
+  display: flex;
+  align-items: center;
 }
 
-.video-views {
-  padding-left: 30px;
+.video-views:before,
+.video-likes:before,
+.video-dislikes:before,
+.video-comments:before {
+  content: '';
+  position: relative;
+  height: 1vw;
+  width: 1vw;
+  margin-right: 0.2vw;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: center;
+  color: rgb(61, 61, 61);
+}
+
+.video-views:before {
   background-image: url('/assets/viewed.svg');
 }
 
-.video-likes {
+.video-likes:before {
   background-image: url('/assets/liked.svg');
 }
 
-.video-dislikes {
+.video-dislikes:before {
   background-image: url('/assets/dislike.svg');
 }
 
-.video-comments {
+.video-comments:before {
   background-image: url('/assets/comments.svg');
 }
 
+
 .video-button {
-  width: 9vw;
-  margin-top: auto;
+  width: 44%;
+  margin: 0.8vw;
   padding: 0.6vw 0;
   box-shadow: 2px 0px 4px 0px rgba(47, 128, 237, 1);
   background-color: #2F80ED;
   border: none;
   border-radius: 0.2vw;
   color: white;
-  margin: 0 auto;
+  font-size: 1vw;
 }
