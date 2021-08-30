@@ -21,6 +21,10 @@ export class VideosService {
     return this.videos;
   }
 
+  getByIndex(i: number): Video {
+    return this.videos[i];
+  }
+
   makeVisible(): void {
     this.filter.isVisible = true;
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
 import { Video } from '../../video-data/models/video';
-import { VIDEOS } from '../../video-data/mock-videos';
+import { ActivatedRoute } from '@angular/router';
+import { VideosService } from 'src/app/video-data/services/videos.service';
 
 
 
@@ -10,15 +12,22 @@ import { VIDEOS } from '../../video-data/mock-videos';
   styleUrls: ['./video-details.component.scss'],
 })
 export class VideoDetailsComponent implements OnInit {
-  @Input() video?: Video = VIDEOS[0];
+  @Input() video?: Video;
 
-  constructor() { }
+  @Input() index?: number;
+
+  constructor(
+    private route: ActivatedRoute,
+    private service: VideosService,
+    private location: Location) { }
 
   ngOnInit(): void {
+    const index = this.route.snapshot.params.id;
+    this.video = this.service.getByIndex(index);
   }
 
   goBack(): void {
-
+    this.location.back();
   }
 
 }

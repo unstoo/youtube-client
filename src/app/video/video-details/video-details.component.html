@@ -2,7 +2,7 @@
   *ngIf="video"
   class="video-details"
 >
-  <button class="button" (click)="goBack">&#10094;</button>
+  <button class="button" (click)="goBack()">&#10094;</button>
 
     <img
       [src]="video.snippet.thumbnails.standard.url"

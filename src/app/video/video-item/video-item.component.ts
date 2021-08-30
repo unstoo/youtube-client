@@ -9,6 +9,8 @@ import { Video } from '../../video-data/models/video';
 export class VideoItemComponent implements OnInit {
   @Input() video?: Video;
 
+  @Input() index?: number;
+
   constructor() { }
 
   ngOnInit(): void {
