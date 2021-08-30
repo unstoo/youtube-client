@@ -14,8 +14,8 @@ export class SearchComponent implements OnInit {
   name: string = 'Your Name';
 
   constructor(
-    private videosService: VideosService
-    ) { }
+    private videosService: VideosService,
+  ) { }
 
   ngOnInit(): void {
   }

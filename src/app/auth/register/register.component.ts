@@ -5,10 +5,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
+
   constructor() {
     this.form = new FormGroup({
       firstname: new FormControl('', [
@@ -19,31 +20,31 @@ export class RegisterComponent implements OnInit {
       ]),
       email: new FormControl('', [
         Validators.required,
-        Validators.email
+        Validators.email,
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(4)
+        Validators.minLength(4),
       ]),
     },
     {
-      updateOn: 'blur'
+      updateOn: 'blur',
     });
   }
 
 
 
-ngOnInit(): void {
-}
-
-get f() {
-  return this.form.controls;
-}
-
-submit(): void {
-  if(this.form.status === 'VALID'){
-    console.log(this.form.value);
+  ngOnInit(): void {
   }
-}
+
+  get f() {
+    return this.form.controls;
+  }
+
+  submit(): void {
+    if (this.form.status === 'VALID'){
+      console.log(this.form.value);
+    }
+  }
 
 }

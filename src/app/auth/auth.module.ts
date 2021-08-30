@@ -12,14 +12,14 @@ import { RegisterComponent } from './register/register.component';
   declarations: [
     ModalComponent,
     SigninComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
-    ModalComponent
-  ]
+    ModalComponent,
+  ],
 })
 export class AuthModule { }

@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  styleUrls: ['./signin.component.scss'],
 })
 export class SigninComponent implements OnInit {
   form!: FormGroup;
@@ -13,15 +13,15 @@ export class SigninComponent implements OnInit {
     this.form = new FormGroup({
       email: new FormControl('', [
         Validators.required,
-        Validators.email
+        Validators.email,
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.minLength(4)
+        Validators.minLength(4),
       ]),
     },
     {
-      updateOn: 'blur'
+      updateOn: 'blur',
     });
   }
 
@@ -33,7 +33,7 @@ export class SigninComponent implements OnInit {
   }
 
   submit(): void {
-    if(this.form.status === 'VALID'){
+    if (this.form.status === 'VALID'){
       console.log(this.form.value);
     }
   }

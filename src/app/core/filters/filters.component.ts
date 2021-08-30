@@ -14,7 +14,7 @@ export class FiltersComponent implements OnInit {
 
   viewsDesc: boolean = true;
 
-  filter: VideoFilter = { str: '' }
+  filter: VideoFilter = { str: '' };
 
   constructor(private videosService: VideosService) {}
 

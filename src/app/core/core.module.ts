@@ -19,6 +19,6 @@ import { LoginComponent } from './login/login.component';
     CommonModule,
     FormsModule,
   ],
-  exports: [ SearchComponent ]
+  exports: [ SearchComponent ],
 })
 export class CoreModule { }
