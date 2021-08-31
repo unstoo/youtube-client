@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
         this.form.value.email,
         this.form.value.password,
         this.form.value.firstname,
-        this.form.value.lastname
+        this.form.value.lastname,
       );
     }
   }

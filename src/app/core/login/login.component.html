@@ -1,1 +1,15 @@
-<p>login works!</p>
+<ng-container>
+  <span class="login-name">{{ user.name }}</span>
+  <button
+    *ngIf="user.name"
+    class="login-button"
+    (click)="logout()"
+    title="Log out"
+  ></button>
+  <button
+    *ngIf="!user.name"
+    class="login-button"
+    (click)="login()"
+    title="Log in"
+  ></button>
+</ng-container>

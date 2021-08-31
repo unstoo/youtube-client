@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { NotFoundComponent } from './404/not-found/not-found.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   {
     path: 'video',
     loadChildren: () => import('./video/video.module').then(m => m.VideoModule),
+    canLoad: [AuthGuard],
   },
   {
     path: 'auth',
