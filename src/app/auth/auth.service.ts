@@ -1,21 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable  } from 'rxjs';
+
+import { User } from './models/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService  {
-  data: any = {
+  data: User = {
     name: '',
   };
 
-  constructor(private router: Router) { }
+  private auth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  constructor(private router: Router) {
+    const result = this.getToken();
+    if (result) {
+      this.auth.next(true);
+    }
+  }
 
   login(email: string, password: string): void {
     this.storeToken(email);
     this.data.name = email;
     this.data.password = password;
-    this.router.navigate(['/']);
+    this.auth.next(true);
+    this.router.navigate(['/video']);
   }
 
   register(email: string, password: string, firstname: string, lastname: string): void {
@@ -24,16 +35,18 @@ export class AuthService  {
     this.data.firstname = firstname;
     this.data.lastname = lastname;
     this.data.password = password;
-    this.router.navigate(['/']);
+    this.auth.next(true);
+    this.router.navigate(['/video']);
   }
 
   logout(): void {
     this.destroyToken();
     this.data.name = '';
+    this.auth.next(false);
     this.router.navigate(['/auth']);
   }
 
-  getData(): string {
+  getData(): User {
     this.data.name = this.getToken() || '';
     return this.data;
   }
@@ -43,6 +56,10 @@ export class AuthService  {
       return true;
     }
     return false;
+  }
+
+  isAuthO(): Observable<boolean> {
+    return this.auth.asObservable();
   }
 
   private storeToken(token: string): void {

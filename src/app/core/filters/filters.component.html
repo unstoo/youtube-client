@@ -1,7 +1,13 @@
-<div class="container" *ngIf="visible">
-  <span class="title" >Sorting by: </span>
+<div class="container">
+  <span class="title">Sorting by: </span>
   <button class="button" (click)="this.sortByDate()">date</button>
   <button class="button" (click)="this.sortByViews()">views</button>
   <label class="label" for="filter">by word or sentence</label>
-  <input class="filter" id="filter" type="text" name="filter" (input)="filterChange($event)">
+  <input
+    class="filter"
+    id="filter"
+    type="text"
+    name="filter"
+    (input)="filterChange($event)"
+  />
 </div>

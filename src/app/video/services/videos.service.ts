@@ -12,7 +12,7 @@ export class VideosService {
 
   filter: VideoFilter = {
     str: '',
-    isVisible: true,
+    isVisible: false,
   };
 
   constructor() { }

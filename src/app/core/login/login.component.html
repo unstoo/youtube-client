@@ -1,13 +1,13 @@
 <ng-container>
-  <span class="login-name">{{ user.name }}</span>
+  <span *ngIf="user" class="login-name">{{ user.name }}</span>
   <button
-    *ngIf="user.name"
+    *ngIf="user?.name"
     class="login-button"
     (click)="logout()"
     title="Log out"
   ></button>
   <button
-    *ngIf="!user.name"
+    *ngIf="!user?.name"
     class="login-button"
     (click)="login()"
     title="Log in"

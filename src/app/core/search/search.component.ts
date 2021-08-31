@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 import { VideosService } from 'src/app/video/services/videos.service';
 
 @Component({
@@ -11,13 +12,15 @@ export class SearchComponent implements OnInit {
 
   visible: boolean = false;
 
-  name: string = 'Your Name';
+  auth: boolean = false;
 
   constructor(
     private videosService: VideosService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
+    this.authService.isAuthO().subscribe((auth) => this.auth = auth);
   }
 
   onSearch() {
