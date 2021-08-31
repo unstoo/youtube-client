@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { VideosService } from '../../video-data/services/videos.service';
-import { VideoFilter } from '../../video-data/models/video-filter';
+import { VideosService } from '../../video/services/videos.service';
+import { VideoFilter } from '../../video/models/video-filter';
 
 @Component({
   selector: 'app-filters',

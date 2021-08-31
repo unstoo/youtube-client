@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { VideosService } from 'src/app/video-data/services/videos.service';
+import { VideosService } from 'src/app/video/services/videos.service';
 
 @Component({
   selector: 'app-search',

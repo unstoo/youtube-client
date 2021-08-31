@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Location } from '@angular/common';
-import { Video } from '../../video-data/models/video';
-import { ActivatedRoute } from '@angular/router';
-import { VideosService } from 'src/app/video-data/services/videos.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Video } from '../models/video';
+import { VideosService } from 'src/app/video/services/videos.service';
 
 
 
@@ -16,10 +17,15 @@ export class VideoDetailsComponent implements OnInit {
 
   @Input() index?: number;
 
+  private readonly canGoBack: boolean;
+
   constructor(
-    private route: ActivatedRoute,
     private service: VideosService,
-    private location: Location) { }
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly location: Location) {
+    this.canGoBack = !!(this.router.getCurrentNavigation()?.previousNavigation);
+  }
 
   ngOnInit(): void {
     const index = this.route.snapshot.params.id;
@@ -27,7 +33,11 @@ export class VideoDetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
+    if (this.canGoBack) {
+      this.location.back();
+    } else {
+      this.router.navigate(['..'], { relativeTo: this.route });
+    }
   }
 
 }
