@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
+
+
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   form!: FormGroup;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.form = new FormGroup({
       firstname: new FormControl('', [
         Validators.required,
@@ -32,8 +34,6 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-
-
   ngOnInit(): void {
   }
 
@@ -43,7 +43,12 @@ export class RegisterComponent implements OnInit {
 
   submit(): void {
     if (this.form.status === 'VALID'){
-      console.log(this.form.value);
+      this.authService.register(
+        this.form.value.email,
+        this.form.value.password,
+        this.form.value.firstname,
+        this.form.value.lastname
+      );
     }
   }
 
