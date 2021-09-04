@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VideosService } from 'src/app/videos.service';
 
 @Component({
   selector: 'app-search',
@@ -6,10 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
+  input: string = '';
 
-  constructor() { }
+  visible: boolean = false;
+
+  name: string = 'Your Name';
+
+  constructor(private videosService: VideosService) { }
 
   ngOnInit(): void {
   }
 
+  onSearch() {
+    this.videosService.makeVisible();
+  }
+
+  toggleSettings() {
+    this.visible = !this.visible;
+  }
 }

@@ -1,1 +1,17 @@
-<p>search works!</p>
+<div class="search-container">
+  <div class="search-container-main">
+    <a href="/" class="logo"></a>
+    <div class="input-container">
+      <input class="search-input" type="text" id="input" [(ngModel)]="input" placeholder="What do you want to find out?">
+      <button (click)="onSearch()" class="search-button">Search</button>
+    </div>
+    <button (click)="toggleSettings()" class="settings-button"></button>
+
+    <div class="login">
+      <span class="login-name">{{name}}</span>
+      <button class="login-button"></button>
+    </div>
+  </div>
+  <app-filters class="search-container-footer" [visible]="visible"></app-filters>
+</div>
+

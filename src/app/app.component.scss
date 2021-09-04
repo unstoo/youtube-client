@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+.layout-header {
+  display: flex;
+  background-color: #E5E5E5;
+  width: 100%;
+}
+
+.layout-header > * {
+  width: 100%;
+}
+
+.layout-main {
+  padding-bottom: 1vw;
+}

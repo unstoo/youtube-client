@@ -1,1 +1,6 @@
-<p>video-grid works!</p>
+<div *ngIf="filter.isVisible">
+  <ul class='video-grid' *ngIf="videos">
+    <app-video-item *ngFor="let video of videos | filterVideosByTitle:filter.str" [video]="video">
+    </app-video-item>
+  </ul>
+</div>
