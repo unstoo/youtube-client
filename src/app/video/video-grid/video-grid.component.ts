@@ -1,5 +1,7 @@
+import { VideosService } from 'src/app/video/services/videos.service';
 import { Component, OnInit } from '@angular/core';
-import { Video } from '../../video';
+import { Video } from '../models/video';
+import { VideoFilter } from '../models/video-filter';
 
 @Component({
   selector: 'app-video-grid',
@@ -9,9 +11,13 @@ import { Video } from '../../video';
 export class VideoGridComponent implements OnInit {
   videos: Video[] = [];
 
-  constructor() { }
+  filter: VideoFilter =  { str: '' };
+
+  constructor(private videosService: VideosService) { }
 
   ngOnInit(): void {
+    this.videos = this.videosService.getVideos();
+    this.filter = this.videosService.getFilter();
   }
 
 }

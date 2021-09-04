@@ -1,0 +1,31 @@
+<div class="search-container">
+  <div class="search-container-main">
+    <a *ngIf="auth" href="/" class="logo"></a>
+    <a *ngIf="!auth" class="logo"></a>
+    <div class="input-container">
+      <input
+        class="search-input"
+        type="text"
+        id="input"
+        [(ngModel)]="input"
+        placeholder="What do you want to find out?"
+        [disabled]="!auth"
+      />
+      <button (click)="onSearch()" class="search-button" [disabled]="!auth">
+        Search
+      </button>
+    </div>
+    <button
+      (click)="toggleSettings()"
+      class="settings-button"
+      [disabled]="!auth"
+    ></button>
+
+    <div class="login">
+      <app-login></app-login>
+    </div>
+  </div>
+  <div *ngIf="visible">
+    <app-filters class="search-container-footer"></app-filters>
+  </div>
+</div>

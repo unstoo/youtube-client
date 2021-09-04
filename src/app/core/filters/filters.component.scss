@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+}
+.title {
+  color: rgba(146, 146, 146, 1);
+}
+
+.button {
+  color: rgba(47, 128, 237, 1);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  font-size: 1.2vw;
+  padding: 0;
+  margin-left: 1vw;
+
+}
+
+.label {
+  color: rgba(47, 128, 237, 1);
+  font-size: 1.2vw;
+  margin-left: 2vw;
+}
+
+.filter {
+  font-size: 1vw;
+  padding: 0;
+  padding-left: 0.4vw;
+  margin-left: 1vw;
+  border: none;
+}

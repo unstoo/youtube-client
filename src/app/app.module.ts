@@ -1,24 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { FiltersComponent } from './header/filters/filters.component';
-import { VideoGridComponent } from './video/video-grid/video-grid.component';
-import { VideoItemComponent } from './video/video-item/video-item.component';
-import { SearchComponent } from './header/search/search.component';
-import { LoginComponent } from './header/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FiltersComponent,
-    VideoGridComponent,
-    VideoItemComponent,
-    SearchComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    CoreModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
