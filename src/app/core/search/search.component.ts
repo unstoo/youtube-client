@@ -24,7 +24,7 @@ export class SearchComponent implements OnInit {
   }
 
   onSearch(): void {
-    this.videosService.searchFor(this.input);
+    this.videosService.search(this.input);
   }
 
   toggleSettings() {

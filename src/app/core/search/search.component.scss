@@ -36,7 +36,7 @@
   min-height: 50px;
   width: 3.6vw;
   min-width: 50px;
-  background-image: url('/assets/logo.svg');
+  background-image: url("/assets/logo.svg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -52,6 +52,11 @@ button {
 
 button:hover {
   background-color: rgb(0, 96, 223);
+}
+
+button:disabled {
+  background-color: #acacac;
+  box-shadow: none;
 }
 
 .search-button {
@@ -78,7 +83,7 @@ button:hover {
   min-height: 30px;
   width: 2.2vw;
   min-width: 30px;
-  background-image: url('/assets/settings.svg');
+  background-image: url("/assets/settings.svg");
   background-repeat: no-repeat;
   background-size: 80%;
   background-position: center;
@@ -90,23 +95,4 @@ button:hover {
   align-items: center;
   position: absolute;
   right: 2vw;
-}
-
-.login-name {
-  margin-right: 1vw;
-  color: #4F4F4F;
-  font-size: 1vw;
-}
-
-.login-button {
-  height: 2.2vw;
-  min-height: 30px;
-  width: 2.2vw;
-  min-width: 30px;
-  background-image: url('/assets/login.svg');
-  background-repeat: no-repeat;
-  background-size: 104%;
-  background-position: center;
-  border-radius: 0.4vw;
-  background-color: none;
 }

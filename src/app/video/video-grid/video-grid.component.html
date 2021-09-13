@@ -1,9 +1,8 @@
-<div *ngIf="!isLoading">
+<div *ngIf="videos.length">
   <ul class="video-grid" *ngIf="videos">
     <app-video-item
       *ngFor="let video of videos | filterVideosByTitle: filter; index as i"
       [video]="video"
-      [index]="i"
     >
     </app-video-item>
   </ul>

@@ -1,14 +1,7 @@
-<article
-  *ngIf="video"
-  class="video-details"
->
+<article *ngIf="video" class="video-details">
   <button class="button" (click)="goBack()">&#10094;</button>
 
-    <img
-      [src]="video.snippet.thumbnails.standard.url"
-      alt="video thumbnail"
-      class="video-img"
-    />
+  <img [src]="thumbnail" alt="video thumbnail" class="video-img" />
 
   <div class="details" [appColorTagByDate]="this.video.snippet.publishedAt">
     <div class="header-row">

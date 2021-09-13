@@ -1,6 +1,6 @@
 import { VideosService } from 'src/app/video/services/videos.service';
 import { Component, OnInit } from '@angular/core';
-import { Video } from '../models/video';
+import { Video } from '../../models/video';
 
 @Component({
   selector: 'app-video-grid',
@@ -17,13 +17,16 @@ export class VideoGridComponent implements OnInit {
   constructor(private videosService: VideosService) {}
 
   ngOnInit(): void {
-    this.videos = this.videosService.getVideos();
     this.videosService.title.subscribe((title) => {
       this.filter = title;
     });
 
     this.videosService.isLoading.subscribe((val) => {
       this.isLoading = val;
+    });
+
+    this.videosService.videos.subscribe((val) => {
+      this.videos = val;
     });
   }
 

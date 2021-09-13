@@ -1,76 +1,76 @@
 import { Injectable } from '@angular/core';
-import { Video } from '../models/video';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Video } from '../../models/video';
+import { BehaviorSubject } from 'rxjs';
+import { YoutubeService } from './youtube.service';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class VideosService {
-  videos: Video[] = [];
+  videos:  BehaviorSubject<Video[]> = new BehaviorSubject<Video[]>([]);
 
-  private isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
-  isLoading: Observable<boolean> = this.isLoading$.asObservable();
+  isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   title: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor() { }
-
-  getVideos(): Video[] {
-    return this.videos;
+  constructor(private ytService: YoutubeService) {
+    this.ytService.data.subscribe((videos) => {
+      this.videos.next(videos);
+    });
   }
 
-  getByIndex(i: number): Video {
-    return this.videos[i];
+  search(query: string): void {
+    this.ytService.fetchVideos(query);
   }
 
-  searchFor(title: string): void {
+  getByIndex(id: string): Video | undefined {
+    const result = this.videos.value.find((v) => v.id === id);
+    return result;
+  }
+
+  filterByTitle(title: string): void {
     this.title.next(title);
   }
 
-  getFilter(): Observable<string> {
-    return this.title.asObservable();
-  }
-
   sortByViewsAsc(): void {
-    const result = this.videos?.sort((videoA, videoB) => {
+    const result = this.videos.value.sort((videoA, videoB) => {
       const a = +videoA.statistics.viewCount;
       const b = +videoB.statistics.viewCount;
       return  a - b;
     });
 
-    this.videos = result;
+    this.videos.next(result);
   }
 
   sortByViewsDesc(): void {
-    const result = this.videos.sort((videoA, videoB) => {
+    const result = this.videos.value.sort((videoA, videoB) => {
       const a = +videoA.statistics.viewCount;
       const b = +videoB.statistics.viewCount;
       return  b - a;
     });
 
-    this.videos = result;
+    this.videos.next(result);
   }
 
   sortByDateAsc(): void {
-    const result = this.videos.sort((videoA, videoB) => {
+    const result = this.videos.value.sort((videoA, videoB) => {
       const a = new Date(videoA.snippet.publishedAt).getTime();
       const b = new Date(videoB.snippet.publishedAt).getTime();
       return  a - b;
     });
 
-    this.videos = result;
+    this.videos.next(result);
   }
 
   sortByDateDesc(): void {
-    const result = this.videos.sort((videoA, videoB) => {
+    const result = this.videos.value.sort((videoA, videoB) => {
       const a = new Date(videoA.snippet.publishedAt).getTime();
       const b = new Date(videoB.snippet.publishedAt).getTime();
       return  b - a;
     });
 
-    this.videos = result;
+    this.videos.next(result);
   }
 
 
