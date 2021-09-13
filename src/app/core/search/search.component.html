@@ -7,7 +7,7 @@
         class="search-input"
         type="text"
         id="input"
-        (change)="onChange($event)"
+        (input)="onChange($event)"
         placeholder="What do you want to find out?"
         [disabled]="!auth"
       />

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
+
 import { AuthService } from 'src/app/auth/auth.service';
 import { VideosService } from 'src/app/video/services/videos.service';
 
@@ -22,7 +24,10 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.isAuthO().subscribe((auth) => this.auth = auth);
-    this.input.subscribe((val) => {
+    this.input.pipe(
+      map((i) => i),
+      debounceTime(500),
+    ).subscribe((val) => {
       if (val.length > 2) {
         this.videosService.search(val);
       }
