@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { VideosService } from 'src/app/video/services/videos.service';
 
@@ -8,7 +9,7 @@ import { VideosService } from 'src/app/video/services/videos.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  input: string = '';
+  input: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   visible: boolean = false;
 
@@ -21,10 +22,16 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.isAuthO().subscribe((auth) => this.auth = auth);
+    this.input.subscribe((val) => {
+      if (val.length > 2) {
+        this.videosService.search(val);
+      }
+    });
   }
 
-  onSearch(): void {
-    this.videosService.search(this.input);
+  onChange(e: Event) {
+    const el = e.target as HTMLInputElement;
+    this.input.next(el.value);
   }
 
   toggleSettings() {

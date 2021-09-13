@@ -7,13 +7,10 @@
         class="search-input"
         type="text"
         id="input"
-        [(ngModel)]="input"
+        (change)="onChange($event)"
         placeholder="What do you want to find out?"
         [disabled]="!auth"
       />
-      <button (click)="onSearch()" class="search-button" [disabled]="!auth">
-        Search
-      </button>
     </div>
     <button
       (click)="toggleSettings()"
