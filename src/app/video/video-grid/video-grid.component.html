@@ -1,6 +1,10 @@
-<div *ngIf="filter.isVisible">
-  <ul class='video-grid' *ngIf="videos">
-    <app-video-item *ngFor="let video of videos | filterVideosByTitle:filter.str; index as i" [video]="video" [index]="i">
+<div *ngIf="!isLoading">
+  <ul class="video-grid" *ngIf="videos">
+    <app-video-item
+      *ngFor="let video of videos | filterVideosByTitle: filter; index as i"
+      [video]="video"
+      [index]="i"
+    >
     </app-video-item>
   </ul>
 </div>

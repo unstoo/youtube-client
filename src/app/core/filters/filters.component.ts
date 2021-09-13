@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { VideosService } from '../../video/services/videos.service';
-import { VideoFilter } from '../../video/models/video-filter';
 
 @Component({
   selector: 'app-filters',
@@ -14,12 +13,14 @@ export class FiltersComponent implements OnInit {
 
   viewsDesc: boolean = true;
 
-  filter: VideoFilter = { str: '' };
+  filter: string = '';
 
   constructor(private videosService: VideosService) {}
 
   ngOnInit(): void {
-    this.filter = this.videosService.getFilter();
+    this.videosService.title.subscribe((val) => {
+      this.filter = val;
+    });
   }
 
   sortByDate(): void {
@@ -42,8 +43,7 @@ export class FiltersComponent implements OnInit {
 
   filterChange(event: Event): void {
     const target = event.currentTarget as HTMLInputElement;
-    console.log(target.value);
-    this.filter.str = target.value;
+    this.videosService.title.next(target.value);
   }
 
 }

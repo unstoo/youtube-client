@@ -23,8 +23,8 @@ export class SearchComponent implements OnInit {
     this.authService.isAuthO().subscribe((auth) => this.auth = auth);
   }
 
-  onSearch() {
-    this.videosService.makeVisible();
+  onSearch(): void {
+    this.videosService.searchFor(this.input);
   }
 
   toggleSettings() {

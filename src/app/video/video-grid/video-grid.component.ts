@@ -1,7 +1,6 @@
 import { VideosService } from 'src/app/video/services/videos.service';
 import { Component, OnInit } from '@angular/core';
 import { Video } from '../models/video';
-import { VideoFilter } from '../models/video-filter';
 
 @Component({
   selector: 'app-video-grid',
@@ -11,13 +10,22 @@ import { VideoFilter } from '../models/video-filter';
 export class VideoGridComponent implements OnInit {
   videos: Video[] = [];
 
-  filter: VideoFilter =  { str: '' };
+  filter: string =  '';
 
-  constructor(private videosService: VideosService) { }
+  isLoading: boolean = true;
+
+  constructor(private videosService: VideosService) {}
 
   ngOnInit(): void {
     this.videos = this.videosService.getVideos();
-    this.filter = this.videosService.getFilter();
+    this.videosService.title.subscribe((title) => {
+      this.filter = title;
+    });
+
+    this.videosService.isLoading.subscribe((val) => {
+      this.isLoading = val;
+    });
   }
+
 
 }

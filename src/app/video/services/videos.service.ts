@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Video } from '../models/video';
-import { VideoFilter } from '../models/video-filter';
-import { VIDEOS } from '../mock-videos';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class VideosService {
-  videos: Video[] = VIDEOS;
+  videos: Video[] = [];
 
-  filter: VideoFilter = {
-    str: '',
-    isVisible: false,
-  };
+  private isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  isLoading: Observable<boolean> = this.isLoading$.asObservable();
+
+  title: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor() { }
 
@@ -25,12 +25,12 @@ export class VideosService {
     return this.videos[i];
   }
 
-  makeVisible(): void {
-    this.filter.isVisible = true;
+  searchFor(title: string): void {
+    this.title.next(title);
   }
 
-  getFilter(): VideoFilter {
-    return this.filter;
+  getFilter(): Observable<string> {
+    return this.title.asObservable();
   }
 
   sortByViewsAsc(): void {
