@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Video } from '../../models/video';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { YoutubeService } from './youtube.service';
 
 
@@ -8,6 +8,8 @@ import { YoutubeService } from './youtube.service';
   providedIn: 'root',
 })
 export class VideosService {
+  selectedVideo: BehaviorSubject<Video | undefined> = new BehaviorSubject<Video | undefined>(undefined);
+
   videos:  BehaviorSubject<Video[]> = new BehaviorSubject<Video[]>([]);
 
   isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -24,9 +26,18 @@ export class VideosService {
     this.ytService.fetchVideos(query);
   }
 
-  getByIndex(id: string): Video | undefined {
+  getByIndex(id: string): Observable<Video | undefined> {
     const result = this.videos.value.find((v) => v.id === id);
-    return result;
+
+    if (result === undefined) {
+      this.ytService.fetchOneVideo(id).subscribe((val) => {
+        console.log('getByIndex=', val);
+
+        this.selectedVideo.next(val);
+      });
+    }
+
+    return this.selectedVideo.asObservable();
   }
 
   filterByTitle(title: string): void {

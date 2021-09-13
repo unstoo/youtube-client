@@ -43,3 +43,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# App Keys
+/src/app/const/YT_KEY.ts

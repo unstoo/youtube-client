@@ -13,11 +13,11 @@ import { VideosService } from 'src/app/video/services/videos.service';
   styleUrls: ['./video-details.component.scss'],
 })
 export class VideoDetailsComponent implements OnInit {
-  video?: Video;
-
-  index?: number;
+  video: Video | undefined;
 
   thumbnail: string = '';
+
+  isLoading: boolean = true;
 
   private readonly canGoBack: boolean;
 
@@ -31,7 +31,16 @@ export class VideoDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const index = this.route.snapshot.params.id;
-    this.video = this.service.getByIndex(index);
+
+    this.service.getByIndex(index).subscribe((val) => {
+      this.thumbnail = val?.snippet.thumbnails.standard?.url || val?.snippet.thumbnails.high?.url || '';
+      this.video = val;
+    });
+
+    this.service.isLoading.subscribe((val) => {
+      this.isLoading = val;
+    });
+
     this.thumbnail = this.video?.snippet.thumbnails.standard?.url || this.video?.snippet.thumbnails.high?.url || '';
   }
 
