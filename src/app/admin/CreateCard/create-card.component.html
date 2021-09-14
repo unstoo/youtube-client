@@ -1,0 +1,60 @@
+<ng-container [formGroup]="form">
+  <h1>Create new card</h1>
+  <div>
+    <label for="card-title">Title</label>
+    <input type="text" name="title" id="card-title" formControlName="title" />
+    <div *ngIf="title.errors && (title.dirty || title.touched); else stub">
+      <div class="error-message" *ngIf="title.errors?.required">
+        Title required
+      </div>
+      <div class="error-message" *ngIf="title.errors?.minlength">
+        Minimum length 4
+      </div>
+    </div>
+  </div>
+  <ng-template class="error-message" #stub>
+    <div class="error-message">&nbsp;</div>
+  </ng-template>
+
+  <div>
+    <label for="card-description">Description</label>
+    <input
+      type="text"
+      name="description"
+      id="card-description"
+      formControlName="description"
+    />
+    <div
+      *ngIf="
+        description.errors && (description.dirty || description.touched);
+        else stub
+      "
+    >
+      <div class="error-message" *ngIf="description.errors?.required">
+        Description required
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="card-img">Image URL</label>
+    <input type="text" name="img" id="card-img" formControlName="img" />
+    <div *ngIf="img.errors && (img.dirty || img.touched); else stub">
+      <div class="error-message" *ngIf="img.errors?.required">
+        Description required
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <label for="card-video">Video URL</label>
+    <input type="text" name="video" id="card-video" formControlName="video" />
+    <div *ngIf="video.errors && (video.dirty || video.touched); else stub">
+      <div class="error-message" *ngIf="video.errors?.required">
+        Description required
+      </div>
+    </div>
+  </div>
+
+  <button type="button" (click)="onClick()">Create</button>
+</ng-container>

@@ -1,0 +1,66 @@
+:host {
+  max-width: 25%;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  padding: calc(10px + 3vmin);
+  margin: 3vmin auto;
+  box-shadow: 2px 0px 4px 0px rgb(212, 212, 212);
+  border: 1px solid rgb(212, 212, 212);
+  border-radius: calc(4px + 0.1vmin);
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: calc(15px + 4vmin);
+  font-size: 1.5rem;
+  color: #363636;
+}
+
+:host > div {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  font-size: inherit;
+  margin-bottom: calc(15px + 1vmin);
+}
+
+:host > div:last-of-type {
+  margin-bottom: calc(15px + 2vmin);
+}
+
+label {
+  margin-bottom: calc(4px + 0.4vmin);
+}
+
+input {
+  border-radius: calc(4px + 0.1vmin);
+  padding: calc(4px + 0.1vmin);
+  border: 1px solid #848484;
+  font-size: inherit;
+}
+
+button {
+  margin-bottom: calc(10px + 1vmin);
+  padding: calc(4px + 0.1vmin);
+  background-color: rgba(47, 128, 237, 1);
+  border-radius: calc(4px + 0.1vmin);
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: 2px 0px 4px 0px rgba(47, 128, 237, 1);
+}
+
+button:hover {
+  background-color: rgb(0, 96, 223);
+}
+
+button:disabled {
+  background-color: #acacac;
+  box-shadow: none;
+}
+
+.error-message {
+  color: rgb(255, 85, 85);
+}
