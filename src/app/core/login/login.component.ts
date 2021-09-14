@@ -8,12 +8,12 @@ import { User } from 'src/app/models/user.interface';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  user?: User;
+  user?: User | undefined;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.user = this.authService.getData();
+    this.authService.getData().subscribe((user) => this.user = user);
   }
 
   logout(): void {

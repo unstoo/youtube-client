@@ -1,15 +1,15 @@
 <ng-container>
-  <span *ngIf="user" class="login-name">{{ user.name }}</span>
-  <button
-    *ngIf="user?.name"
-    class="login-button"
-    (click)="logout()"
-    title="Log out"
-  ></button>
-  <button
-    *ngIf="!user?.name"
-    class="login-button"
-    (click)="login()"
-    title="Log in"
-  ></button>
+  <div class="user" *ngIf="user">
+    <div>
+      <span class="login-name">{{ user.name }}</span>
+      <a href="#logout" (click)="logout()">Log out</a>
+    </div>
+    <button class="login-button" (click)="logout()" title="Log out"></button>
+  </div>
+  <div class="user" *ngIf="!user">
+    <div>
+      <a href="#login" (click)="login()">Log in</a>
+    </div>
+    <button class="login-button" (click)="login()" title="Log in"></button>
+  </div>
 </ng-container>

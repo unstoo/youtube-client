@@ -8,9 +8,8 @@ import { User } from '../models/user.interface';
   providedIn: 'root',
 })
 export class AuthService  {
-  data: User = {
-    name: '',
-  };
+  private user: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
+
 
   private auth: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -18,37 +17,40 @@ export class AuthService  {
     const result = this.getToken();
     if (result) {
       this.auth.next(true);
+      this.user.next({ name: result });
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   login(email: string, password: string): void {
     this.storeToken(email);
-    this.data.name = email;
-    this.data.password = password;
+    // Auth Server
+    this.user.next({
+      name: email,
+    });
     this.auth.next(true);
     this.router.navigate(['/video']);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   register(email: string, password: string, firstname: string, lastname: string): void {
     this.storeToken(email);
-    this.data.name = email;
-    this.data.firstname = firstname;
-    this.data.lastname = lastname;
-    this.data.password = password;
+    this.user.next({
+      name: email,
+    });
     this.auth.next(true);
     this.router.navigate(['/video']);
   }
 
   logout(): void {
     this.destroyToken();
-    this.data.name = '';
+    this.user.next(undefined);
     this.auth.next(false);
     this.router.navigate(['/auth']);
   }
 
-  getData(): User {
-    this.data.name = this.getToken() || '';
-    return this.data;
+  getData(): Observable<User | undefined> {
+    return this.user.asObservable();
   }
 
   isAuth(): boolean {
