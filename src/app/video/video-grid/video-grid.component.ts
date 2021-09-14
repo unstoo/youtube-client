@@ -1,6 +1,6 @@
 import { VideosService } from 'src/app/video/services/videos.service';
 import { Component, OnInit } from '@angular/core';
-import { Video } from '../../models/video';
+import { Video } from '../../models/video.interface';
 
 @Component({
   selector: 'app-video-grid',

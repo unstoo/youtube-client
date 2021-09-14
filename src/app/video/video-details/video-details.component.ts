@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Video } from '../../models/video';
+import { Video } from '../../models/video.interface';
 import { VideosService } from 'src/app/video/services/videos.service';
 
 

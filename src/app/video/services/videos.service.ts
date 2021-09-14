@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Video } from '../../models/video';
+import { Video } from '../../models/video.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { YoutubeService } from './youtube.service';
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
-import { Video } from '../../models/video';
+import { Video } from '../../models/video.interface';
 
 const SEARCH = 'search?&part=snippet&maxResults=15&q=';
 const YT = 'videos?&part=snippet,statistics&id=';

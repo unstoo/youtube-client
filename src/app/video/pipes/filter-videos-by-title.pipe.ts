@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Video } from '../../models/video';
+import { Video } from '../../models/video.interface';
 
 @Pipe({
   name: 'filterVideosByTitle',
