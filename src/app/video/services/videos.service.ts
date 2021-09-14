@@ -31,10 +31,10 @@ export class VideosService {
 
     if (result === undefined) {
       this.ytService.fetchOneVideo(id).subscribe((val) => {
-        console.log('getByIndex=', val);
-
         this.selectedVideo.next(val);
       });
+    } else {
+      this.selectedVideo.next(result);
     }
 
     return this.selectedVideo.asObservable();
