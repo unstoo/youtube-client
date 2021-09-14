@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Video } from '../../models/video';
 
-import { KEY } from '../../const/YT_KEY';
-
-const SEARCH = `https://www.googleapis.com/youtube/v3/search?&key=${KEY}&part=snippet&maxResults=15&q=`;
-const YT = `https://www.googleapis.com/youtube/v3/videos?&key=${KEY}&part=snippet,statistics&id=`;
+const SEARCH = 'search?&part=snippet&maxResults=15&q=';
+const YT = 'videos?&part=snippet,statistics&id=';
 
 interface YoutubeIDResponse {
   items: {
@@ -17,8 +15,6 @@ interface YoutubeIDResponse {
 
 interface Response {
   items: Video[],
-  status: number,
-  error: any,
 }
 
 @Injectable({
@@ -26,6 +22,8 @@ interface Response {
 })
 export class YoutubeService {
   data: BehaviorSubject<Video[]> = new BehaviorSubject<Video[]>([]);
+
+  error: BehaviorSubject<HttpErrorResponse | null> = new BehaviorSubject<HttpErrorResponse | null>(null);
 
   constructor(private http: HttpClient) { }
 
@@ -38,14 +36,15 @@ export class YoutubeService {
       }),
       mergeMap((videoIds: string) => this.http.get<Response>(YT + videoIds),
       ),
+      map((res: Response) => res.items,
+      ),
       catchError((error) =>  {
-        return of(error);
+        this.error.next(error);
+        return of([] as Video[]);
       }),
-    ).subscribe((res: Response) => {
-      if (!res.error) {
-        const videos: Video[] = res.items;
-        this.data.next(videos);
-      }
+    ).subscribe((res) => {
+      this.data.next(res);
+      this.error.next(null);
     });
   }
 
