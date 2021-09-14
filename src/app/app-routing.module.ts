@@ -16,6 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   { path: '', redirectTo: '/video', pathMatch: 'full' },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canLoad: [AuthGuard],
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
