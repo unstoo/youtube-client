@@ -1,0 +1,8 @@
+<ng-container>
+  <button *ngIf="!modal" (click)="toggleModal()">Add card</button>
+  <div *ngIf="modal" class="modal">
+    <button class="button-modal" (click)="toggleModal()">✖</button>
+    <app-create-card></app-create-card>
+  </div>
+  <app-custom-cards-list></app-custom-cards-list>
+</ng-container>

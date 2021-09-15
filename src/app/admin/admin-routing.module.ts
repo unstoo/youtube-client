@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateCardComponent } from './CreateCard/create-card.component';
+import { CreateCardComponent } from './create-card/create-card.component';
+import { IndexComponent } from './pages/index.component';
 
-const routes: Routes = [{ path: '', component: CreateCardComponent }];
+const routes: Routes = [
+  { path: '', component: IndexComponent },
+  { path: 'add', component: CreateCardComponent },
+
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

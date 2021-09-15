@@ -1,0 +1,18 @@
+:host {
+  position: relative;
+  display: flex;
+}
+
+button {
+  position: absolute;
+  left: 2vw;
+  top: -2.4vw;
+}
+.modal {
+  position: absolute;
+  padding: 2vw;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+}

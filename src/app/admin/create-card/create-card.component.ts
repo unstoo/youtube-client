@@ -1,27 +1,21 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-interface Card {
-  title: string,
-  description: string,
-  imgUrl: string,
-  videUrl: string,
-  date: string,
-}
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
+import { CustomCard } from 'src/app/models/custom-card.interface';
+import { addCustomCard } from '../../redux/actions/custom-cards.actions';
 
 @Component({
-  selector: 'app-admin',
+  selector: 'app-create-card',
   templateUrl: './create-card.component.html',
   styleUrls: ['./create-card.component.scss'],
 })
 export class CreateCardComponent  {
-  card: Card | undefined;
+  card: CustomCard | undefined;
 
   form!: FormGroup;
 
-  date: string = (new Date()).toLocaleDateString();
-
-  constructor() {
+  constructor(private store: Store, private router: Router) {
     this.form = new FormGroup({
       title: new FormControl('', [
         Validators.required,
@@ -58,12 +52,23 @@ export class CreateCardComponent  {
     return this.form.controls.video;
   }
 
-
   onClick(): void {
-    console.log(this.form.value);
-    console.log(this.form.controls.title);
-    if (this.form.status === 'VALID'){
+    if (this.form.status === 'VALID') {
+      const card = this.createCard();
+      const action = addCustomCard({ card });
+      this.store.dispatch(action);
+      this.router.navigate(['/admin']);
     }
   }
 
+  createCard(): CustomCard {
+    return {
+      ...this.form.value,
+      date: this.getDate(),
+    };
+  }
+
+  getDate(): string {
+    return (new Date()).toLocaleDateString();
+  }
 }
