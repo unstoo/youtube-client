@@ -1,0 +1,72 @@
+<ng-container [formGroup]="form">
+  <h2 >Register</h2>
+  <label for="lastname">First Name</label>
+  <div class="input-wrapper" [class.error]="(f.firstname.dirty || f.firstname.touched) && f.firstname.errors">
+    <input type="firstname" name="firstname" id="lastname" formControlName="firstname">
+  </div>
+  <div *ngIf="f.firstname.errors && (f.firstname.dirty || f.firstname.touched);else fnStub">
+    <div class="error-message" *ngIf="f.firstname.errors?.required">
+      First name required
+    </div>
+  </div>
+
+  <ng-template #fnStub>
+    <div class="error-message">
+      &nbsp;
+    </div>
+  </ng-template>
+
+  <label for="lastname">Last Name</label>
+  <div class="input-wrapper" [class.error]="(f.lastname.dirty || f.lastname.touched) && f.lastname.errors">
+    <input type="lastname" name="lastname" id="lastname" formControlName="lastname">
+  </div>
+  <div *ngIf="f.lastname.errors && (f.lastname.dirty || f.lastname.touched);else lnStub">
+    <div class="error-message" *ngIf="f.lastname.errors?.required">
+      Last name required
+    </div>
+  </div>
+  <ng-template #lnStub>
+    <div class="error-message">
+      &nbsp;
+    </div>
+  </ng-template>
+
+  <label for="email">Email</label>
+  <div class="input-wrapper"
+  [class.error]="(f.email.dirty || f.email.touched) && f.email.errors">
+    <input type="text" name="email" id="email" formControlName="email">
+  </div>
+  <div *ngIf="f.email?.errors  && (f.email.dirty || f.email.touched);else emailStub">
+    <div class="error-message" *ngIf="f.email.errors?.required">
+      Email required
+    </div>
+    <div class="error-message" *ngIf="f.email.errors?.email">
+      Invalid email format
+    </div>
+  </div>
+  <ng-template #emailStub>
+    <div class="error-message">
+      &nbsp;
+    </div>
+  </ng-template>
+
+  <label for="password">Password</label>
+  <div class="input-wrapper" [class.error]="(f.password.dirty || f.password.touched) && f.password.errors">
+    <input type="password" name="password" id="password" formControlName="password">
+  </div>
+  <div *ngIf="f.password.errors && (f.password.dirty || f.password.touched);else pwStub">
+    <div class="error-message" *ngIf="f.password.errors?.required">
+      Password required
+    </div>
+    <div class="error-message" *ngIf="f.password.errors?.minlength">
+      Password minimum length is 4
+    </div>
+  </div>
+  <ng-template #pwStub>
+    <div class="error-message">
+      &nbsp;
+    </div>
+  </ng-template>
+
+  <button type="submit" (click)="submit()" [disabled]="form.invalid">Login</button>
+</ng-container>

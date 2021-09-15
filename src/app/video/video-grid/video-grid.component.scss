@@ -1,0 +1,10 @@
+.video-grid {
+  max-width: 94vw;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-auto-rows: 1fr;
+  column-gap: 2vw;
+  row-gap: 2vw;
+  margin: 2vw auto;
+}
