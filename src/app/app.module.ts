@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { customCardsReducer } from './redux/reducers/custom-cards.reducer';
+import { customVideosReducer } from './redux/reducers/videos.reducer';
 
 
 @NgModule({
@@ -16,7 +17,10 @@ import { customCardsReducer } from './redux/reducers/custom-cards.reducer';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ cards: customCardsReducer }),
+    StoreModule.forRoot({
+      cards: customCardsReducer,
+      videos: customVideosReducer,
+    }),
     BrowserAnimationsModule,
     CoreModule,
     HttpClientModule,
