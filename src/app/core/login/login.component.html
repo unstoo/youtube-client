@@ -2,14 +2,20 @@
   <div class="user" *ngIf="user">
     <div>
       <span class="login-name">{{ user.name }}</span>
-      <a href="#logout" (click)="logout()">Log out</a>
+      <a routerLink="/logout" (click)="logout()">Log out</a>
     </div>
-    <button class="login-button" (click)="logout()" title="Log out"></button>
+    <a routerLink="/admin">
+      <button class="login-button" title="Admin page" tabindex="-1"></button>
+    </a>
   </div>
   <div class="user" *ngIf="!user">
     <div>
-      <a href="#login" (click)="login()">Log in</a>
+      <a routerLink="/auth" (click)="login()">Log in</a>
     </div>
-    <button class="login-button" (click)="login()" title="Log in"></button>
+    <button
+      routerLink="/auth"
+      class="login-button still"
+      title="Log in"
+    ></button>
   </div>
 </ng-container>

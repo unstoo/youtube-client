@@ -1,7 +1,7 @@
 <div class="search-container">
   <div class="search-container-main">
-    <a *ngIf="auth" href="/" class="logo"></a>
-    <a *ngIf="!auth" class="logo"></a>
+    <a *ngIf="auth" routerLink="video" class="logo"></a>
+    <a *ngIf="!auth" routerLink="auth" class="logo"></a>
     <div class="input-container">
       <input
         class="search-input"

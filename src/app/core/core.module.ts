@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { SearchComponent } from './search/search.component';
 import { FiltersComponent } from './filters/filters.component';
 import { LoginComponent } from './login/login.component';
-
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -18,6 +16,7 @@ import { LoginComponent } from './login/login.component';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
   ],
   exports: [ SearchComponent ],
 })

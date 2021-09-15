@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
-
 import { AuthService } from 'src/app/auth/auth.service';
 import { VideosService } from 'src/app/video/services/videos.service';
 
