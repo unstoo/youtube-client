@@ -3,6 +3,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { Video } from '../../models/video.interface';
+import { Store } from '@ngrx/store';
+import { addVideos } from 'src/app/redux/actions/videos.actions';
 
 const SEARCH = 'search?&part=snippet&maxResults=15&q=';
 const YT = 'videos?&part=snippet,statistics&id=';
@@ -25,7 +27,10 @@ export class YoutubeService {
 
   error: BehaviorSubject<HttpErrorResponse | null> = new BehaviorSubject<HttpErrorResponse | null>(null);
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private store: Store,
+    private http: HttpClient,
+  ) {}
 
   fetchVideos(searchText: string): void {
     this.http.get<YoutubeIDResponse>(SEARCH + searchText, {}).pipe(
@@ -45,6 +50,7 @@ export class YoutubeService {
     ).subscribe((res) => {
       this.data.next(res);
       this.error.next(null);
+      this.store.dispatch(addVideos({ videos: res }));
     });
   }
 
