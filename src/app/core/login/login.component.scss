@@ -1,6 +1,8 @@
 
-.still:hover {
-  background-color: rgba(47, 128, 237, 1);
+button:disabled {
+  background-color: rgb(172, 172, 172);
+  box-shadow: none;
+  cursor: auto;
 }
 
 .login-name {

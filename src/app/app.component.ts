@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'Youtube client Angular';
+  title = 'Youtube client - Angular - Yevgeny Kozlov';
 }

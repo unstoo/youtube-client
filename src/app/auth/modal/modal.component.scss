@@ -21,7 +21,7 @@ button {
   background: 0;
   font-size: 1.2vw;
   color: #2F80ED;
-  transition: border 0.3s;
+  box-shadow: none;
 }
 
 button:disabled,

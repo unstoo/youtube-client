@@ -71,9 +71,13 @@ button:hover {
   background-color: rgb(0, 96, 223);
 }
 
-button:disabled,
-button:hover:disabled {
-  background-color: rgb(172, 172, 172);
+button.inactive {
   box-shadow: none;
+  cursor: auto;
+}
+
+button.inactive:hover,
+button.inactive:focus {
+  background-color: rgb(172, 172, 172);
 }
 
