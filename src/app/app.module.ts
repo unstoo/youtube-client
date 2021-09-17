@@ -1,26 +1,34 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from './http-interceptors';
 import { AppComponent } from './app.component';
-import { FiltersComponent } from './header/filters/filters.component';
-import { VideoGridComponent } from './video/video-grid/video-grid.component';
-import { VideoItemComponent } from './video/video-item/video-item.component';
-import { SearchComponent } from './header/search/search.component';
-import { LoginComponent } from './header/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { StoreModule } from '@ngrx/store';
+import { customCardsReducer } from './redux/reducers/custom-cards.reducer';
+import { customVideosReducer } from './redux/reducers/videos.reducer';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    FiltersComponent,
-    VideoGridComponent,
-    VideoItemComponent,
-    SearchComponent,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({
+      cards: customCardsReducer,
+      videos: customVideosReducer,
+    }),
+    BrowserAnimationsModule,
+    CoreModule,
+    HttpClientModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

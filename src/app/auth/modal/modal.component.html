@@ -1,0 +1,8 @@
+<ng-container>
+  <div class="header">
+    <button (click)="register = false" [disabled]="!register">Sign in</button>
+    <button (click)="register = true" [disabled]="register">Register</button>
+  </div>
+  <app-signin *ngIf="!register"></app-signin>
+  <app-register *ngIf="register"></app-register>
+</ng-container>

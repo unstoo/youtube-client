@@ -1,0 +1,35 @@
+
+button:disabled {
+  background-color: rgb(172, 172, 172);
+  box-shadow: none;
+  cursor: auto;
+}
+
+.login-name {
+  color: #4f4f4f;
+  font-size: 1vw;
+}
+
+.login-button {
+  height: 2.2vw;
+  min-height: 30px;
+  width: 2.2vw;
+  min-width: 30px;
+  background-image: url("/assets/login.svg");
+  background-repeat: no-repeat;
+  background-size: 104%;
+  background-position: center;
+  border-radius: 0.4vw;
+  background-color: none;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user > div {
+  margin-right: 1vw;
+  display: flex;
+  flex-direction: column;
+}

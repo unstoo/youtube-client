@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+}
+
+.title {
+  color: rgba(146, 146, 146, 1);
+  font-size: 1.2vw;
+}
+
+.button {
+  margin-left: 1vw;
+  padding: 0;
+  background: none;
+  color: rgba(47, 128, 237, 1);
+  text-decoration: underline;
+  font-size: 1.2vw;
+  box-shadow: none;
+}
+
+.filter {
+  font-size: 1vw;
+  margin-left: 1vw;
+  border: none;
+}

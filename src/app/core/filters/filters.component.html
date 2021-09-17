@@ -1,0 +1,13 @@
+<div class="container">
+  <span class="title">Sort by: </span>
+  <button class="button" (click)="this.sortByDate()">date</button>
+  <button class="button" (click)="this.sortByViews()">views</button>
+  <input
+    class="filter"
+    id="filter"
+    type="text"
+    name="filter"
+    (input)="filterChange($event)"
+    placeholder="By title"
+  />
+</div>
